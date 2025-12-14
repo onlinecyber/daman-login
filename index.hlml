@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daman - Login</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: Arial, sans-serif;
+}
+
+body{
+  background:#f5f6fa;
+}
+
+/* ===== HEADER ===== */
+.header{
+  background: linear-gradient(135deg,#ff6a6a,#ff8a65);
+  padding:20px;
+  color:#fff;
+  border-bottom-left-radius:20px;
+  border-bottom-right-radius:20px;
+}
+
+.header h2{
+  text-align:center;
+  font-weight:bold;
+}
+
+.header p{
+  font-size:13px;
+  margin-top:10px;
+  opacity:.9;
+}
+
+/* ===== CONTAINER ===== */
+.container{
+  padding:20px;
+}
+
+/* ===== TABS ===== */
+.tabs{
+  display:flex;
+  justify-content:space-around;
+  margin-bottom:20px;
+}
+
+.tab{
+  flex:1;
+  text-align:center;
+  padding:10px;
+  font-weight:bold;
+  color:#999;
+  border-bottom:2px solid transparent;
+}
+
+.tab.active{
+  color:#ff6a6a;
+  border-bottom:2px solid #ff6a6a;
+}
+
+/* ===== INPUT ===== */
+.input-group{
+  margin-bottom:15px;
+}
+
+.input-group label{
+  display:block;
+  font-size:14px;
+  margin-bottom:5px;
+  color:#555;
+}
+
+.phone-box{
+  display:flex;
+  gap:10px;
+}
+
+select,input{
+  width:100%;
+  padding:12px;
+  border-radius:10px;
+  border:1px solid #ddd;
+  outline:none;
+  font-size:14px;
+}
+
+/* ===== CHECKBOX ===== */
+.remember{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-size:13px;
+  color:#888;
+  margin:10px 0;
+}
+
+/* ===== BUTTONS ===== */
+button{
+  width:100%;
+  padding:14px;
+  border:none;
+  border-radius:25px;
+  font-size:16px;
+  margin-top:10px;
+}
+
+/* Disabled look */
+.login-btn{
+  background:#dcdde1;
+  color:#888;
+}
+
+/* ACTIVE LOGIN (same app jaisa) */
+.login-btn.active{
+  background:linear-gradient(135deg,#ff6a6a,#ff8a65);
+  color:#fff;
+}
+
+.register-btn{
+  background:#fff;
+  border:1px solid #ff6a6a;
+  color:#ff6a6a;
+}
+
+/* ===== FOOTER ===== */
+.footer{
+  display:flex;
+  justify-content:space-around;
+  margin-top:25px;
+  font-size:13px;
+  color:#ff6a6a;
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <h2>Daman</h2>
+  <p>
+    Log in<br>
+    Please log in with your phone number or email<br>
+    If you forget your password, please contact customer service
+  </p>
+</div>
+
+<!-- CONTAINER -->
+<div class="container">
+
+  <!-- TABS -->
+  <div class="tabs">
+    <div class="tab active">phone number</div>
+    <div class="tab">Email Login</div>
+  </div>
+
+  <!-- PHONE -->
+  <div class="input-group">
+    <label>Phone number</label>
+    <div class="phone-box">
+      <select>
+        <option>+91</option>
+      </select>
+      <input type="number" id="phone" placeholder="Please enter the phone number">
+    </div>
+  </div>
+
+  <!-- PASSWORD -->
+  <div class="input-group">
+    <label>Password</label>
+    <input type="password" id="password" placeholder="Password">
+  </div>
+
+  <!-- REMEMBER -->
+  <div class="remember">
+    <input type="checkbox">
+    <span>Remember password</span>
+  </div>
+
+  <!-- BUTTONS -->
+  <button class="login-btn" id="loginBtn">Log in</button>
+  <button class="register-btn">Register</button>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <span>Forgot password</span>
+    <span>Customer Service</span>
+  </div>
+
+</div>
+
+<!-- ===== JS LOGIC ===== -->
+<script>
+const phoneInput = document.getElementById("phone");
+const passwordInput = document.getElementById("password");
+const loginBtn = document.getElementById("loginBtn");
+
+const correctPhone = "7208886187";
+const correctPassword = "archana1996";
+
+function checkLogin(){
+  if(
+    phoneInput.value === correctPhone &&
+    passwordInput.value === correctPassword
+  ){
+    loginBtn.classList.add("active");
+  }else{
+    loginBtn.classList.remove("active");
+  }
+}
+
+phoneInput.addEventListener("input", checkLogin);
+passwordInput.addEventListener("input", checkLogin);
+
+// 👉 LOGIN CLICK
+loginBtn.addEventListener("click", function(){
+  if(
+    phoneInput.value === correctPhone &&
+    passwordInput.value === correctPassword
+  ){
+    // wallet page open
+    window.location.href = "wallet.html";
+  }else{
+    alert("Invalid phone number or password");
+  }
+});
+</script>
+</body>
+</html>
